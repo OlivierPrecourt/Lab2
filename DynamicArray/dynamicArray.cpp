@@ -40,7 +40,7 @@ void DynamicArray::setElement(unsigned int _index, int _valeur){
 		//on augmente la capacité
 	}
 	else if (_index < 0) {
-		throw invalid_argument(ERREUR_HORS_DE_INDEX);
+		throw out_of_range(ERREUR_HORS_DE_INDEX);
 	} else {
 		tabElement[_index] = _valeur;
 	}
@@ -48,7 +48,7 @@ void DynamicArray::setElement(unsigned int _index, int _valeur){
 
 int DynamicArray::getElement(unsigned int _index) const {
 	if (_index >= capacite){
-		throw  invalid_argument(ERREUR_HORS_DE_INDEX);
+		throw  out_of_range(ERREUR_HORS_DE_INDEX);
 	}
 	else {
 		return tabElement[_index];
