@@ -3,7 +3,6 @@
 
 #include "../DynamicArray/dynamicArray.h"
 
-#include  <vld.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

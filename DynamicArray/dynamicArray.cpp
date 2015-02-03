@@ -8,7 +8,7 @@ const string ERREUR_HORS_DE_INDEX = "l'element n'existe pas";
 const string ERREUR_CAPACITE_INVALIDE = "capacite invalide";
 
 DynamicArray::~DynamicArray(){
-	delete tabElement;
+	delete[] tabElement;
 }
 
 DynamicArray::DynamicArray(){
@@ -36,14 +36,24 @@ DynamicArray::DynamicArray(unsigned int _capacite){
 
 void DynamicArray::setElement(unsigned int _index, int _valeur){
 	
-	if (_index >= capacite){
-		//on augmente la capacité
-	}
-	else if (_index < 0) {
+	if (_index < 0) {
 		throw out_of_range(ERREUR_HORS_DE_INDEX);
-	} else {
-		tabElement[_index] = _valeur;
+	} else if (_index >= capacite){
+		int *nouveauTableau = new int[_index + 1];
+
+		for (int i = 0; i < capacite; i++){
+			nouveauTableau[i] = tabElement[i];
+		}
+
+		for (int i = capacite; i < _index + 1; i++){
+			nouveauTableau[i] = 0;
+		}
+		delete[] tabElement;
+		tabElement = nouveauTableau;
+		capacite = _index + 1;
 	}
+
+		tabElement[_index] = _valeur;
 }
 
 int DynamicArray::getElement(unsigned int _index) const {
@@ -64,6 +74,18 @@ void DynamicArray::setCapacite(unsigned int _capacite){
 		throw invalid_argument(ERREUR_CAPACITE_INVALIDE);
 	}
 	else {
+		int *nouveauTableau = new int[_capacite];
+
+		for (int i = 0; i < capacite; i++){
+			nouveauTableau[i] = tabElement[i];
+		}
+
+		for (int i = capacite; i < _capacite; i++){
+			nouveauTableau[i] = tabElement[i];
+		}
+
+		delete[] tabElement;
+		tabElement = nouveauTableau;
 		capacite = _capacite;
 	}
 }
