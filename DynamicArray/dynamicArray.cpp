@@ -73,7 +73,7 @@ void DynamicArray::setCapacite(unsigned int _capacite){
 	if (_capacite < 1) {
 		throw invalid_argument(ERREUR_CAPACITE_INVALIDE);
 	}
-	else {
+	else if (_capacite > capacite){
 		int *nouveauTableau = new int[_capacite];
 
 		for (int i = 0; i < capacite; i++){
@@ -81,6 +81,17 @@ void DynamicArray::setCapacite(unsigned int _capacite){
 		}
 
 		for (int i = capacite; i < _capacite; i++){
+			nouveauTableau[i] = 0;
+		}
+
+		delete[] tabElement;
+		tabElement = nouveauTableau;
+		capacite = _capacite;
+	}
+	else {
+		int *nouveauTableau = new int[_capacite];
+
+		for (int i = 0; i < _capacite; i++){
 			nouveauTableau[i] = tabElement[i];
 		}
 
