@@ -246,43 +246,43 @@ namespace DynamicArrayTests
 	//		AssertDynamicArraysAreEqual(tableau1, tableau2);
 	//	}
 
-	//	TEST_METHOD(etant_donne_deux_dynamicArrays_identiques_l_operateur_d_egalite_devrait_retourner_vrai)
-	//	{
-	//		//Arrange
-	//		const int CAPACITE = 5;
-	//		DynamicArray tableau1(CAPACITE);
+		TEST_METHOD(etant_donne_deux_dynamicArrays_identiques_l_operateur_d_egalite_devrait_retourner_vrai)
+		{
+			//Arrange
+			const int CAPACITE = 5;
+			DynamicArray tableau1(CAPACITE);
 
-	//		for (unsigned int i = 0; i < CAPACITE; ++i)
-	//		{
-	//			tableau1.setElement(i, i*i);
-	//		}
+			for (unsigned int i = 0; i < CAPACITE; ++i)
+			{
+				tableau1.setElement(i, i*i);
+			}
 
-	//		DynamicArray tableau2(tableau1);
+			DynamicArray tableau2(tableau1);
 
-	//		//Action-Assert
-	//		Assert::IsTrue(tableau1 == tableau2);
-	//	}
+			//Action-Assert
+			Assert::IsTrue(tableau1 == tableau2);
+		}
 
-	//	TEST_METHOD(etant_donne_deux_dynamicArrays_de_capacite_differente_l_operateur_d_egalite_devrait_retourner_faux)
-	//	{
-	//		//Arrange
-	//		DynamicArray tableau1(2);
-	//		DynamicArray tableau2(3);
+		TEST_METHOD(etant_donne_deux_dynamicArrays_de_capacite_differente_l_operateur_d_egalite_devrait_retourner_faux)
+		{
+			//Arrange
+			DynamicArray tableau1(2);
+			DynamicArray tableau2(3);
 
-	//		//Action-Assert
-	//		Assert::IsFalse(tableau1 == tableau2);
-	//	}
+			//Action-Assert
+			Assert::IsFalse(tableau1 == tableau2);
+		}
 
-	//	TEST_METHOD(etant_donne_deux_dynamicArrays_de_capacite_egale_mais_de_contenu_different_l_operateur_d_egalite_devrait_retourner_faux)
-	//	{
-	//		//Arrange
-	//		DynamicArray tableau1(2);
-	//		DynamicArray tableau2(2);
-	//		tableau2.setElement(1, 99);
+		TEST_METHOD(etant_donne_deux_dynamicArrays_de_capacite_egale_mais_de_contenu_different_l_operateur_d_egalite_devrait_retourner_faux)
+		{
+			//Arrange
+			DynamicArray tableau1(2);
+			DynamicArray tableau2(2);
+			tableau2.setElement(1, 99);
 
-	//		//Action-Assert
-	//		Assert::IsFalse(tableau1 == tableau2);
-	//	}
+			//Action-Assert
+			Assert::IsFalse(tableau1 == tableau2);
+		}
 
 
 		TEST_METHOD(l_operateur_d_addition_devrait_concatener_deux_dynamicArrays_si_differents)
@@ -322,45 +322,45 @@ namespace DynamicArrayTests
 			}
 		}
 
-	//	TEST_METHOD(l_operateur_d_addition_devrait_ajoueter_le_dynamicArray_a_sa_suite_si_identique)
-	//	{
-	//		//Arrange
-	//		const int TABLEAU_CAPACITE_DEPART = 3;
+		TEST_METHOD(l_operateur_d_addition_devrait_ajoueter_le_dynamicArray_a_sa_suite_si_identique)
+		{
+			//Arrange
+			const int TABLEAU_CAPACITE_DEPART = 3;
 
-	//		DynamicArray tableau(TABLEAU_CAPACITE_DEPART);
-	//		for (unsigned int i = 0; i < TABLEAU_CAPACITE_DEPART; ++i)
-	//		{
-	//			tableau.setElement(i, i*i);
-	//		}
+			DynamicArray tableau(TABLEAU_CAPACITE_DEPART);
+			for (unsigned int i = 0; i < TABLEAU_CAPACITE_DEPART; ++i)
+			{
+				tableau.setElement(i, i*i);
+			}
 
-	//		//Action
-	//		tableau += tableau;
+			//Action
+			tableau += tableau;
 
-	//		//Assert
-	//		Assert::AreEqual(TABLEAU_CAPACITE_DEPART * 2, tableau.getCapacite());
+			//Assert
+			Assert::AreEqual(TABLEAU_CAPACITE_DEPART * 2, tableau.getCapacite());
 
-	//		for (unsigned int i = 0; i < TABLEAU_CAPACITE_DEPART; ++i)
-	//		{
-	//			Assert::AreEqual(int(i*i), tableau.getElement(i));
-	//		}
+			for (unsigned int i = 0; i < TABLEAU_CAPACITE_DEPART; ++i)
+			{
+				Assert::AreEqual(int(i*i), tableau.getElement(i));
+			}
 
-	//		for (unsigned int i = TABLEAU_CAPACITE_DEPART; i < tableau.getCapacite(); ++i)
-	//		{
-	//			int valeurElement = int((i - TABLEAU_CAPACITE_DEPART) * (i - TABLEAU_CAPACITE_DEPART));
-	//			Assert::AreEqual(valeurElement, tableau.getElement(i));
-	//		}
-	//	}
+			for (unsigned int i = TABLEAU_CAPACITE_DEPART; i < tableau.getCapacite(); ++i)
+			{
+				int valeurElement = int((i - TABLEAU_CAPACITE_DEPART) * (i - TABLEAU_CAPACITE_DEPART));
+				Assert::AreEqual(valeurElement, tableau.getElement(i));
+			}
+		}
 
 
-	//private:
-	//	void AssertDynamicArraysAreEqual(DynamicArray & dynamicArray1, DynamicArray & dynamicArray2)
-	//	{
-	//		Assert::AreEqual(dynamicArray1.getCapacite(), dynamicArray2.getCapacite());
-	//		for (int i = 0; i < dynamicArray1.getCapacite(); i++)
-	//		{
-	//			Assert::AreEqual(dynamicArray1.getElement(i), dynamicArray2.getElement(i));
-	//		}
-	//	}
+	private:
+		void AssertDynamicArraysAreEqual(DynamicArray & dynamicArray1, DynamicArray & dynamicArray2)
+		{
+			Assert::AreEqual(dynamicArray1.getCapacite(), dynamicArray2.getCapacite());
+			for (int i = 0; i < dynamicArray1.getCapacite(); i++)
+			{
+				Assert::AreEqual(dynamicArray1.getElement(i), dynamicArray2.getElement(i));
+			}
+		}
 
 	};
 }

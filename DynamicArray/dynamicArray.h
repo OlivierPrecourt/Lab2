@@ -11,7 +11,7 @@ public:
 	~DynamicArray();
 	bool operator==(const DynamicArray& _rhs) const;
 	bool operator=(const DynamicArray& _rhs) const;
-	void operator+=(const DynamicArray& _rhs) ;
+	DynamicArray & operator+=(const DynamicArray& _rhs) ;
 	void setElement(unsigned int _index, int _valeur);
 	int getElement(unsigned int index) const;
 	int getCapacite() const;
